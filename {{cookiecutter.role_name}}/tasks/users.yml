@@ -1,0 +1,17 @@
+---
+# Users and groups configuration for {{ cookiecutter.role_name }}
+
+- name: defined groups are created
+  group:
+    name: {% raw %}"{{ item.group }}"{% endraw %}
+    state: present
+  loop: "{{ '{{ '}}{{ cookiecutter.role_name }}_users{{ ' }}'}}"
+  become: true
+
+- name: users added to secondary groups
+  user:
+    name: {% raw %}"{{ item.user }}"
+    append: true
+    groups: "{{ item.group }}"
+  become: true{% endraw %}
+  loop: "{{ '{{ '}}{{ cookiecutter.role_name }}_users{{ ' }}'}}"

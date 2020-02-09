@@ -1,0 +1,44 @@
+---
+# vars file for packages
+
+# Detected OS
+my_os: {% raw %}"{{ ansible_distribution }}_{{ ansible_distribution_major_version }}"{% endraw %}
+
+# Repos create
+{{ cookiecutter.role_name }}_repos_create: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_repos_create['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_repos_create[my_os]
+  | default([]) ) }}"{% endraw %}
+
+# Repos download
+{{ cookiecutter.role_name }}_repos_download: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_repos_download['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_repos_download[my_os]
+  | default([]) ) }}"{% endraw %}
+
+# Templates Copy
+{{ cookiecutter.role_name }}_templates_copy: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_templates_copy['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_templates_copy[my_os]
+  | default([]) ) }}"{% endraw %}
+
+# Services Enable
+{{ cookiecutter.role_name }}_services_enable: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_services_enable['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_services_enable[my_os]
+  | default([]) ) }}"{% endraw %}
+
+# SELinux Enable
+{{ cookiecutter.role_name }}_selinux_enable: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_selinux_enable['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_selinux_enable[my_os]
+  | default([]) ) }}"{% endraw %}
+
+# Packages lists
+{{ cookiecutter.role_name }}_packages_remove: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_remove['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_remove[my_os]
+  | default([]) ) }}"{% endraw %}
+{{ cookiecutter.role_name }}_packages_repos: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_repos['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_repos[my_os]
+  | default([]) ) }}"{% endraw %}
+{{ cookiecutter.role_name }}_packages_prereq: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_prereq['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_prereq[my_os]
+  | default([]) ) }}"{% endraw %}
+{{ cookiecutter.role_name }}_packages_install: {% raw %}"{{ _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_install['all']
+  | union ( _{% endraw %}{{ cookiecutter.role_name }}{% raw %}_packages_install[my_os]
+  | default([]) ) }}"{% endraw %}
